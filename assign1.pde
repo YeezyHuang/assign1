@@ -10,7 +10,7 @@ int h = 50;
 // declare variables
 // --------------------------------------------
 // put your code inside here
-int totalScore = 0;
+int totalScore = 500;
 
 // --------------------------------------------
 
@@ -48,7 +48,7 @@ void draw() {
       // start rolling
       // -------------------------------------------------
       // put your code inside here
-      
+      totalScore -= 50;
       
       // -------------------------------------------------
     }
@@ -62,10 +62,17 @@ void draw() {
       // stop rolling
       // -------------------------------------------------
       // put your code inside here
+      int fruitProb = machine.probability(0.9);
+      machine.setSlotFruit( 0,fruitProb*( int (random(6)) ) );
+      machine.setSlotFruit( 1,fruitProb*( int (random(6)) ) );
+      machine.setSlotFruit( 2,fruitProb*( int (random(6)) ) );
       
- 
- 
- 
+      totalScore += (machine.getFruitCount(0)*machine.getFruitCount(0)*60 
+      +machine.getFruitCount(1)*machine.getFruitCount(1)*10
+      + machine.getFruitCount(2)*machine.getFruitCount(2)*20
+      + machine.getFruitCount(3)*machine.getFruitCount(3)*30
+      + machine.getFruitCount(4)*machine.getFruitCount(4)*40
+      + machine.getFruitCount(5)*machine.getFruitCount(5)*50);
       
       // -------------------------------------------------
     }
